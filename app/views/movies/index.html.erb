@@ -5,7 +5,7 @@
 <% @movies.each do |movie| %>
   <section class="movie">
     <div class="summary">
-    <%= image_tag movie.image_file_name %>
+      <%= image_tag display_image(movie) %>
       <h2>
         <%= link_to movie.title, movie_path(movie) %>
       </h2>

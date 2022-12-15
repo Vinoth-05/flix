@@ -13,6 +13,9 @@
   <body>
   <header>
   <%= image_tag 'logo' %>
+  <%= link_to 'Released movies', filtered_movies_path(:type => "released"), class: "movie-filter" %>
+  <%= link_to 'Upcoming movies', filtered_movies_path(:type => "upcoming"), class: "movie-filter" %>
+  <%= link_to 'Recent movies', filtered_movies_path(:type => "recent"), class: "movie-filter" %>
   <% if current_user %>
     <%= link_to ' SignOut', signout_path, class:"account-settings" %>
     <%= link_to 'Account settings |', edit_user_path(current_user), class:"account-settings" %>

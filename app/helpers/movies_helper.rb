@@ -16,6 +16,14 @@ module MoviesHelper
     end
   end
 
+  def display_image(movie)
+    if movie.main_image.attached?
+      return movie.main_image.variant(resize_to_limit: [150, nil])
+    else
+      return "placeholder"
+    end
+  end
+
   # def cult_movie(movie)
   #   avg = movie.average_stars
   #   reviews_count = movie.reviews_count

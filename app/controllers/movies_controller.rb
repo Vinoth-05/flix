@@ -3,7 +3,21 @@ class MoviesController < ApplicationController
   before_action :require_admin, only: [:new, :show, :create, :edit, :update, :destroy]
 
   def index
-    @movies = Movie.released
+    type = params["type"]
+    case type
+    when "released"
+      @movies = Movie.released
+    when "upcoming"
+      @movies = Movie.upcoming
+    when "recent"
+      @movies = Movie.recent
+    when 'hit'
+      @movies = Movie.all_hit_movies
+    when 'flop'
+      @movies = Movie.all_flop_movies
+    else
+      @movies = Movie.all
+    end
     # @movies = Movie.all_hit_movies
     # @movies = Movie.all_flop_movies
     # @movies = Movie.recently_added
@@ -34,7 +48,7 @@ class MoviesController < ApplicationController
       flash[:success] = 'Movie updated successfully'
       redirect_to @movie
     else
-      flash[:notice] = 'Error! Movie update unsuccessful'
+      flash[:notice] = 'Error! Movie update failed'
       render :edit
     end
   end
@@ -48,11 +62,11 @@ class MoviesController < ApplicationController
   private
 
   def movie_params
-    movie_params = params.require(:movie).permit(:title, :rating, :total_gross, :description, :released_on, :director, :duration, :image_file_name)
+    movie_params = params.require(:movie).permit(:title, :rating, :total_gross, :description, :released_on, :director, :duration, :main_image, genre_ids: [])
   end
 
   def set_movie
-    @movie = Movie.find(params[:id])
+    @movie = Movie.find_by(slug: params[:id])
   end
 
 end

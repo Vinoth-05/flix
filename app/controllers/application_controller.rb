@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_admin
-    redirect_to movies_path, notice: "You are not authorized to do this action" unless current_user.admin?
+    redirect_to movies_path, notice: "You are not authorized to do this action" unless current_user_admin?
   end
 
   def current_user_admin?

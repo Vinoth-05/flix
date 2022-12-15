@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :movies, through: :reviews
   has_many :likes, dependent: :destroy
   has_many :liked_movies, dependent: :destroy, through: :likes, source: :movie
+  scope :by_name, lambda { order(name: :asc) }
+  scope :not_admin, lambda { where.not(admin: true).by_name }
 
   def is_email_format_valid?
     return false if email.blank?

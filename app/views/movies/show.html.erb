@@ -1,5 +1,6 @@
 
 <div class="show-div">
+  <%= image_tag display_image(@movie) %>
   <p><span class="show-content">Name: </span><%= @movie.title %></p>
   <p><span class="show-content">Description: </span><%= @movie.description %></p>
   <p><span class="show-content">Release Date: </span><%= @movie.released_on %></p>
@@ -7,7 +8,6 @@
   <p><span class="show-content">Rating: </span><%= @movie.rating %></p>
   <p><span class="show-content">Director: </span><%= @movie.director %></p>
   <p><span class="show-content">Duration: </span><%= @movie.duration %></p>
-  <p><span class="show-content">Input File Name: </span><%= @movie.image_file_name %></p>
   <%= link_to "Edit", edit_movie_path(@movie), class: "button" %>
   <%= link_to "Delete", movie_path(@movie), class: "button", method: :delete, data: { confirm: 'Are you sure?' } %>
   <%= link_to 'Back to Movies List', movies_path, class: "button" %>
@@ -25,5 +25,13 @@
       <% end %>
     </ul>
   <% end %>
+  <% if @movie.genres.blank? %>
+    <p><span class="show-content">Genre: </span>NA</span>
+  <% else %>
+    <p><span class="show-content">Genre: </span></p>
+    <% @movie.genres.each do |genre| %>
+      <%= genre.name %>
+    <% end %>
+  <% end%>
 </div>
 
