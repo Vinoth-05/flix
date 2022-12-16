@@ -140,6 +140,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.13.8-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.13.8-x86_64-linux)
+      racc (~> 1.4)
     popper_js (1.16.1)
     public_suffix (5.0.0)
     puma (5.6.5)
@@ -211,6 +213,7 @@ GEM
       sprockets (>= 3.0.0)
     sqlite3 (1.5.0-x64-mingw32)
     sqlite3 (1.5.0-x86_64-darwin)
+    sqlite3 (1.5.0-x86_64-linux)
     thor (1.2.1)
     tilt (2.0.11)
     turbolinks (5.2.1)
@@ -245,6 +248,7 @@ GEM
 PLATFORMS
   x64-mingw32
   x86_64-darwin-19
+  x86_64-linux
 
 DEPENDENCIES
   aws-sdk-s3
