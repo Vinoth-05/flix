@@ -20,7 +20,7 @@ module MoviesHelper
     if movie.main_image.attached?
       return movie.main_image.variant(resize_to_limit: [150, nil])
     else
-      return "placeholder"
+      return "placeholder.png"
     end
   end
 
